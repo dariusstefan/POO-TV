@@ -17,10 +17,7 @@ public class User {
     public User(UserInput userInput) {
         this.credentials = new Credentials(userInput.getCredentials());
         this.tokensCount = 0;
-        if (this.credentials.getAccountType().equals("standard"))
-            this.numFreePremiumMovies = 0;
-        else
-            this.numFreePremiumMovies = 15;
+        this.numFreePremiumMovies = 15;
         this.purchasedMovies = new ArrayList<>();
         this.watchedMovies = new ArrayList<>();
         this.likedMovies = new ArrayList<>();
@@ -35,6 +32,16 @@ public class User {
         this.purchasedMovies = copyMoviesArray(user.purchasedMovies);
         this.likedMovies = copyMoviesArray(user.likedMovies);
         this.ratedMovies = copyMoviesArray(user.ratedMovies);
+    }
+
+    public User(Credentials credentials) {
+        this.credentials = new Credentials(credentials);
+        this.tokensCount = 0;
+        this.numFreePremiumMovies = 15;
+        this.purchasedMovies = new ArrayList<>();
+        this.watchedMovies = new ArrayList<>();
+        this.likedMovies = new ArrayList<>();
+        this.ratedMovies = new ArrayList<>();
     }
 
     public User pojoCopy() {
