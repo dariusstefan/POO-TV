@@ -45,7 +45,7 @@ public class RegisterAction extends Action {
         POOTVCore.getInstance().regUser(newUser);
         POOTVCore.getInstance().setCurrentUser(newUser);
         POOTVCore.getInstance().setCurrentPage(HomepageAuth.getInstance());
-        HomepageAuth.getInstance().toLogger(null, Logger.getInstance());
+        HomepageAuth.getInstance().toLogger(Logger.getInstance());
     }
 
     @Override

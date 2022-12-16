@@ -30,8 +30,13 @@ public class SeeDetails extends Page {
     }
 
     @Override
-    public void toLogger(String error, iLogger logger) {
-        logger.print(error, this);
+    public void toLogger(iLogger logger) {
+        logger.print(this);
+    }
+
+    @Override
+    public void auto() {
+
     }
 
     @Override

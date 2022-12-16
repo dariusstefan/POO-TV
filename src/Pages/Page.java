@@ -13,7 +13,9 @@ public abstract class Page {
 
     public abstract void makeAction(Action action);
 
-    public abstract void toLogger(String error, iLogger logger);
+    public abstract void toLogger(iLogger logger);
+
+    public abstract void auto();
 
     public boolean checkReachable(Page page) {
         return this.reachablePages.contains(page);

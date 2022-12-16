@@ -19,6 +19,8 @@ public class POOTVCore {
     private ArrayList<Action> actions;
     private ArrayList<Movie> currentMovies;
 
+    private Movie currentMovie;
+
     private POOTVCore() {
     }
 
@@ -70,15 +72,43 @@ public class POOTVCore {
         currentUser = user;
     }
 
+    public Movie getCurrentMovie() {
+        return currentMovie;
+    }
+
+    public void setCurrentMovie(String movieTitle) {
+        for (Movie movie : currentMovies) {
+            if (movie.getName().equals(movieTitle)) {
+                this.currentMovie = movie;
+                return;
+            }
+        }
+    }
+
     public void regUser(User user) {
         regUsers.add(user);
     }
 
     public void setCurrentPage(Page page) {
         currentPage = page;
+        page.auto();
+    }
+
+    public ArrayList<Movie> getCurrentMovies() {
+        return currentMovies;
     }
 
     public void resetCurrentMovies() {
         this.currentMovies = new ArrayList<>(this.movies);
+        this.currentMovies.removeIf(movie -> (movie.getCountriesBanned()
+                .contains(this.currentUser.getCredentials().getCountry())));
+    }
+
+    public ArrayList<Movie> pojoCopyCurrentMovies() {
+        ArrayList<Movie> copy = new ArrayList<>();
+        for (Movie movie : currentMovies) {
+            copy.add(movie.pojoCopy());
+        }
+        return copy;
     }
 }

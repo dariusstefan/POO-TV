@@ -1,12 +1,13 @@
 package Entities;
 
 import Input.MovieInput;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 
 public class Movie {
     private final String name;
-    private final String year;
+    private final int year;
     private final int duration;
     private final ArrayList<String> genres;
     private final ArrayList<String> actors;
@@ -14,11 +15,13 @@ public class Movie {
     private double rating;
     private int numLikes;
     private int numRatings;
+
+    @JsonIgnore
     private ArrayList<Integer> ratings;
 
     public Movie(MovieInput movieInput) {
         this.name = movieInput.getName();
-        this.year = movieInput.getYear();
+        this.year = Integer.parseInt(movieInput.getYear());
         this.duration = movieInput.getDuration();
         this.genres = movieInput.getGenres();
         this.actors = movieInput.getActors();
@@ -48,7 +51,7 @@ public class Movie {
         return name;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 

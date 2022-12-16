@@ -51,7 +51,7 @@ public class User {
     private ArrayList<Movie> copyMoviesArray(ArrayList<Movie> movies) {
         ArrayList<Movie> copy = new ArrayList<>();
         for (Movie movie : movies) {
-            copy.add(new Movie(movie));
+            copy.add(movie.pojoCopy());
         }
         return copy;
     }

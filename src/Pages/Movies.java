@@ -1,6 +1,7 @@
 package Pages;
 
 import Actions.Action;
+import Entities.POOTVCore;
 import Entities.iLogger;
 
 public class Movies extends Page {
@@ -29,8 +30,13 @@ public class Movies extends Page {
     }
 
     @Override
-    public void toLogger(String error, iLogger logger) {
-        logger.print(error, this);
+    public void toLogger(iLogger logger) {
+        logger.print(this);
+    }
+
+    @Override
+    public void auto() {
+        POOTVCore.getInstance().resetCurrentMovies();
     }
 
     @Override

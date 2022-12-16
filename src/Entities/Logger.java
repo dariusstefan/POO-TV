@@ -44,32 +44,34 @@ public class Logger implements iLogger {
         output.add(newNode);
     }
 
-    public void print(String error, HomepageAuth homepageAuth) {
-        this.print(error, new ArrayList<>(), POOTVCore.getInstance().getCurrentUser().pojoCopy());
+    public void print(HomepageAuth homepageAuth) {
+        this.print(null, new ArrayList<>(), POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }
 
-    public void print(String error, HomepageUnauth homepageUnauth){
-        if (error != null)
-            this.print(error, new ArrayList<>(), null);
+    public void print(HomepageUnauth homepageUnauth){
+//        this.print(null, new ArrayList<>(), null);
     }
 
-    public void print(String error, LoginPage loginPage) {
-
-    }
-
-    public void print(String error, RegisterPage registerPage) {
+    public void print(LoginPage loginPage) {
 
     }
 
-    public void print(String error, Movies moviesPage) {
+    public void print(RegisterPage registerPage) {
 
     }
 
-    public void print(String error, SeeDetails seeDetailsPage) {
-
+    public void print(Movies moviesPage) {
+        this.print(null, POOTVCore.getInstance().pojoCopyCurrentMovies(),
+                POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }
 
-    public void print(String error, Upgrades upgradesPage) {
+    public void print(SeeDetails seeDetailsPage) {
+        ArrayList<Movie> printable = new ArrayList<>();
+        printable.add(POOTVCore.getInstance().getCurrentMovie().pojoCopy());
+        this.print(null, printable, POOTVCore.getInstance().getCurrentUser().pojoCopy());
+    }
+
+    public void print(Upgrades upgradesPage) {
 
     }
 }

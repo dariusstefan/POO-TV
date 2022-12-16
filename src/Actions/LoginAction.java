@@ -48,7 +48,7 @@ public class LoginAction extends Action {
         }
         POOTVCore.getInstance().setCurrentUser(foundUser);
         POOTVCore.getInstance().setCurrentPage(HomepageAuth.getInstance());
-        HomepageAuth.getInstance().toLogger(null, Logger.getInstance());
+        HomepageAuth.getInstance().toLogger(Logger.getInstance());
     }
 
     @Override

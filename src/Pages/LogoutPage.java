@@ -1,6 +1,7 @@
 package Pages;
 
 import Actions.Action;
+import Entities.POOTVCore;
 import Entities.iLogger;
 
 public class LogoutPage extends Page {
@@ -26,7 +27,13 @@ public class LogoutPage extends Page {
     }
 
     @Override
-    public void toLogger(String error, iLogger logger) {
+    public void toLogger(iLogger logger) {
+    }
+
+    @Override
+    public void auto() {
+        POOTVCore.getInstance().setCurrentUser(null);
+        POOTVCore.getInstance().setCurrentPage(HomepageUnauth.getInstance());
     }
 
     @Override

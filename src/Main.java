@@ -16,9 +16,9 @@ public class Main {
         GeneralInput inputData = objectMapper.readValue(new File(args[0]), GeneralInput.class);
         ArrayNode output = objectMapper.createArrayNode();
 
-        if (!args[0].contains("1.json")) {
-            return;
-        }
+//        if (!args[0].contains("5.json")) {
+//            return;
+//        }
 
         POOTVCore.getInstance().initPOOTVCore(inputData);
         Logger.getInstance().initLogger(output, objectMapper);
@@ -40,8 +40,6 @@ public class Main {
         upgradesPage.completeReachable();
         seeDetailsPage.completeReachable();
         logoutPage.completeReachable();
-
-        POOTVCore core = POOTVCore.getInstance();
 
         POOTVCore.getInstance().setCurrentPage(homepageUnauth);
 

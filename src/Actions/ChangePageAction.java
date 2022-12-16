@@ -10,18 +10,15 @@ import java.util.ArrayList;
 public class ChangePageAction extends Action {
     private Page nextPage;
     private String movieTitle;
-    private boolean isLogout;
 
-    public ChangePageAction(Page page, boolean isLogout) {
+    public ChangePageAction(Page page) {
         this.nextPage = page;
         this.movieTitle = null;
-        this.isLogout = isLogout;
     }
 
-    public ChangePageAction(Page page, String movieTitle, boolean isLogout) {
+    public ChangePageAction(Page page, String movieTitle) {
         this.nextPage = page;
         this.movieTitle = movieTitle;
-        this.isLogout = isLogout;
     }
 
     public void setNextPage(Page nextPage) {
@@ -33,13 +30,19 @@ public class ChangePageAction extends Action {
             Logger.getInstance().printError();
             return;
         }
-        if (this.isLogout) {
-            POOTVCore.getInstance().setCurrentUser(null);
-            POOTVCore.getInstance().setCurrentPage(HomepageUnauth.getInstance());
-            return;
+
+        if (this.movieTitle != null) {
+            if (POOTVCore.getInstance().getCurrentMovies()
+                    .stream().allMatch(movie -> (!movie.getName().equals(movieTitle)))) {
+                Logger.getInstance().printError();
+                return;
+            } else {
+                POOTVCore.getInstance().setCurrentMovie(movieTitle);
+            }
         }
+
         POOTVCore.getInstance().setCurrentPage(this.nextPage);
-        nextPage.toLogger(null, Logger.getInstance());
+        nextPage.toLogger(Logger.getInstance());
     }
 
     @Override
