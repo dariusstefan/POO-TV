@@ -26,14 +26,10 @@ public class RegisterPage extends Page {
     }
 
     @Override
-    public void toLogger(iLogger logger) {
-        logger.print(this);
-    }
+    public void toLogger(iLogger logger) {}
 
     @Override
-    public void auto() {
-
-    }
+    public void auto() {}
 
     @Override
     public String toString() {

@@ -26,6 +26,7 @@ public class Movie {
         this.genres = movieInput.getGenres();
         this.actors = movieInput.getActors();
         this.countriesBanned = movieInput.getCountriesBanned();
+        this.ratings = new ArrayList<>();
         this.rating = 0;
         this.numLikes = 0;
         this.numRatings = 0;
@@ -38,6 +39,7 @@ public class Movie {
         this.genres = movie.getGenres();
         this.actors = movie.getActors();
         this.countriesBanned = movie.getCountriesBanned();
+        this.ratings = movie.getRatings();
         this.rating = movie.rating;
         this.numLikes = movie.numLikes;
         this.numRatings = movie.numRatings;

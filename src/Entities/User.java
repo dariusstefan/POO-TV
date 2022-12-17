@@ -92,11 +92,14 @@ public class User {
         this.tokensCount -= amount;
     }
 
-    public void buyTokens(int amount) {
+    public int buyTokens(int amount) {
         int balance = Integer.parseInt(this.credentials.getBalance());
         if (balance >= amount) {
             this.credentials.decBalance(amount);
             this.incTokens(amount);
+            return 0;
+        } else {
+            return -1;
         }
     }
 
@@ -115,13 +118,18 @@ public class User {
             return -1;
         this.decTokens(10);
         this.credentials.upgradeAccount();
-        this.setNumFreePremiumMovies();
         return 0;
     }
 
     public int purchaseMovie(Movie movie) {
         if (this.purchasedMovies.contains(movie))
             return -1;
+        if (this.credentials.getAccountType().equals("premium"))
+            if (this.numFreePremiumMovies > 0) {
+                decNumFreePremiumMovies();
+                this.purchasedMovies.add(movie);
+                return 0;
+            }
         if (this.getTokensCount() < 2)
             return -1;
         this.purchasedMovies.add(movie);
@@ -152,6 +160,8 @@ public class User {
         if (this.ratedMovies.contains(movie))
             return -1;
         if (!this.watchedMovies.contains(movie))
+            return -1;
+        if (rating < 0 || rating > 5)
             return -1;
         this.ratedMovies.add(movie);
         movie.addRating(rating);

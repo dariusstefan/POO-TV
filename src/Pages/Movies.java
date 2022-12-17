@@ -22,6 +22,7 @@ public class Movies extends Page {
         this.addReachable(HomepageAuth.getInstance());
         this.addReachable(SeeDetails.getInstance());
         this.addReachable(LogoutPage.getInstance());
+        this.addReachable(this);
     }
 
     @Override

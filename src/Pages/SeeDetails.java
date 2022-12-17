@@ -35,9 +35,7 @@ public class SeeDetails extends Page {
     }
 
     @Override
-    public void auto() {
-
-    }
+    public void auto() {}
 
     @Override
     public String toString() {

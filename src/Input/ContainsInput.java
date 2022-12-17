@@ -1,12 +1,16 @@
 package Input;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 
-public class Filterinput {
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+public class ContainsInput {
     private ArrayList<String> actors;
     private ArrayList<String> genre;
 
-    public Filterinput() {
+    public ContainsInput() {
     }
 
     public ArrayList<String> getActors() {

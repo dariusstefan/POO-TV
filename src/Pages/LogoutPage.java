@@ -18,17 +18,13 @@ public class LogoutPage extends Page {
     }
 
     @Override
-    public void completeReachable() {
-    }
+    public void completeReachable() {}
 
     @Override
-    public void makeAction(Action action) {
-        action.execute(this);
-    }
+    public void makeAction(Action action) {}
 
     @Override
-    public void toLogger(iLogger logger) {
-    }
+    public void toLogger(iLogger logger) {}
 
     @Override
     public void auto() {

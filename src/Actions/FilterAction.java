@@ -1,6 +1,7 @@
 package Actions;
 
 import Entities.Logger;
+import Entities.POOTVCore;
 import Pages.*;
 import Strategies.FilterStrategy;
 
@@ -35,6 +36,7 @@ public class FilterAction extends Action {
 
     @Override
     public void execute(Movies moviesPage) {
+        POOTVCore.getInstance().resetCurrentMovies();
         for (FilterStrategy strategy : strategies) {
             strategy.filter();
         }
@@ -49,10 +51,5 @@ public class FilterAction extends Action {
     @Override
     public void execute(SeeDetails seeDetailsPage) {
         Logger.getInstance().printError();
-    }
-
-    @Override
-    public void execute(LogoutPage logoutPage) {
-
     }
 }

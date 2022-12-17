@@ -79,8 +79,4 @@ public class ChangePageAction extends Action {
     public void execute(SeeDetails seeDetailsPage) {
         changePage(seeDetailsPage);
     }
-
-    @Override
-    public void execute(LogoutPage logoutPage) {
-    }
 }

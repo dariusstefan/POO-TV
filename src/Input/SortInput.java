@@ -1,5 +1,9 @@
 package Input;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class SortInput {
     private String rating;
     private String duration;

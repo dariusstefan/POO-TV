@@ -17,7 +17,7 @@ public class RatingSort implements FilterStrategy {
             POOTVCore.getInstance().getCurrentMovies().sort((o1, o2) -> {
                 if (o2.getRating() - o1.getRating() > 0)
                     return 1;
-                if (o2.getRating() - o1.getRating() == 0)
+                if (o1.getRating() - o2.getRating() == 0)
                     return 0;
                 return -1;
             });
@@ -25,7 +25,7 @@ public class RatingSort implements FilterStrategy {
             POOTVCore.getInstance().getCurrentMovies().sort((o1, o2) -> {
                 if (o1.getRating() - o2.getRating() > 0)
                     return 1;
-                if (o1.getRating() - o2.getRating() == 0)
+                if (o2.getRating() - o1.getRating() == 0)
                     return 0;
                 return -1;
             });

@@ -12,9 +12,9 @@ public class ActionInput {
     private String startsWith;
     private String movie;
     private String objectType;
-    private String rate;
-    private SortInput sort;
-    private Filterinput contains;
+    private int rate;
+    private FiltersInput filters;
+    private String count;
 
     public ActionInput() {
     }
@@ -75,28 +75,28 @@ public class ActionInput {
         this.objectType = objectType;
     }
 
-    public String getRate() {
+    public int getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(int rate) {
         this.rate = rate;
     }
 
-    public SortInput getSort() {
-        return sort;
+    public FiltersInput getFilters() {
+        return filters;
     }
 
-    public void setSort(SortInput sort) {
-        this.sort = sort;
+    public void setFilters(FiltersInput filters) {
+        this.filters = filters;
     }
 
-    public Filterinput getContains() {
-        return contains;
+    public String getCount() {
+        return count;
     }
 
-    public void setContains(Filterinput contains) {
-        this.contains = contains;
+    public void setCount(String count) {
+        this.count = count;
     }
 
     @Override
@@ -109,9 +109,7 @@ public class ActionInput {
                 ", startsWith=" + startsWith +
                 ", movie='" + movie + '\'' +
                 ", objectType='" + objectType + '\'' +
-                ", rate='" + rate + '\'' +
-                ", sort=" + sort +
-                ", contains=" + contains +
+                ", rate='" + rate +
                 '}';
     }
 }

@@ -4,11 +4,11 @@ import Entities.Logger;
 import Entities.POOTVCore;
 import Pages.*;
 
-public class SearchAction extends Action {
-    private String startsWith;
+public class BuyTokensAction extends Action {
+    private int count;
 
-    public SearchAction(String startsWith) {
-        this.startsWith = startsWith;
+    public BuyTokensAction(int count) {
+        this.count = count;
     }
 
     @Override
@@ -33,15 +33,14 @@ public class SearchAction extends Action {
 
     @Override
     public void execute(Movies moviesPage) {
-        POOTVCore.getInstance().resetCurrentMovies();
-        POOTVCore.getInstance().getCurrentMovies()
-                .removeIf(movie -> (!movie.getName().startsWith(this.startsWith)));
-        moviesPage.toLogger(Logger.getInstance());
+        Logger.getInstance().printError();
     }
 
     @Override
     public void execute(Upgrades upgradesPage) {
-        Logger.getInstance().printError();
+        int result = POOTVCore.getInstance().getCurrentUser().buyTokens(this.count);
+        if (result != 0)
+            Logger.getInstance().printError();
     }
 
     @Override

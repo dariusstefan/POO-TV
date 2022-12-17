@@ -62,8 +62,4 @@ public class RegisterAction extends Action {
     public void execute(SeeDetails seeDetailsPage) {
         Logger.getInstance().printError();
     }
-
-    @Override
-    public void execute(LogoutPage logoutPage) {
-    }
 }

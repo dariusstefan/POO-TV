@@ -48,18 +48,6 @@ public class Logger implements iLogger {
         this.print(null, new ArrayList<>(), POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }
 
-    public void print(HomepageUnauth homepageUnauth){
-//        this.print(null, new ArrayList<>(), null);
-    }
-
-    public void print(LoginPage loginPage) {
-
-    }
-
-    public void print(RegisterPage registerPage) {
-
-    }
-
     public void print(Movies moviesPage) {
         this.print(null, POOTVCore.getInstance().pojoCopyCurrentMovies(),
                 POOTVCore.getInstance().getCurrentUser().pojoCopy());
@@ -69,9 +57,5 @@ public class Logger implements iLogger {
         ArrayList<Movie> printable = new ArrayList<>();
         printable.add(POOTVCore.getInstance().getCurrentMovie().pojoCopy());
         this.print(null, printable, POOTVCore.getInstance().getCurrentUser().pojoCopy());
-    }
-
-    public void print(Upgrades upgradesPage) {
-
     }
 }

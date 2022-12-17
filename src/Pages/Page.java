@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public abstract class Page {
     private final ArrayList<Page> reachablePages = new ArrayList<>();
 
-    abstract void completeReachable();
+    public abstract void completeReachable();
 
     public abstract void makeAction(Action action);
 

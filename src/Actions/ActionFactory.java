@@ -37,6 +37,12 @@ public class ActionFactory {
                 case "register" -> new RegisterAction(new Credentials(actionInput.getCredentials()));
                 case "search" -> new SearchAction(actionInput.getStartsWith());
                 case "filter" -> new FilterAction(this.getStrategies(actionInput));
+                case "buy tokens" -> new BuyTokensAction(Integer.parseInt(actionInput.getCount()));
+                case "buy premium account" -> new BuyPremiumAccountAction();
+                case "purchase" -> new PurchaseAction();
+                case "watch" -> new WatchAction();
+                case "like" -> new LikeAction();
+                case "rate" -> new RateAction(actionInput.getRate());
                 default -> null;
             };
         }
@@ -45,14 +51,14 @@ public class ActionFactory {
     private ArrayList<FilterStrategy> getStrategies(ActionInput actionInput) {
         ArrayList<FilterStrategy> strategies = new ArrayList<>();
 
-        if (actionInput.getSort() != null) {
-            strategies.add(new DurationSort(actionInput.getSort().getDuration()));
-            strategies.add(new RatingSort(actionInput.getSort().getRating()));
+        if (actionInput.getFilters().getSort() != null) {
+            strategies.add(new RatingSort(actionInput.getFilters().getSort().getRating()));
+            strategies.add(new DurationSort(actionInput.getFilters().getSort().getDuration()));
         }
 
-        if (actionInput.getContains() != null) {
-            strategies.add(new ActorsFilter(actionInput.getContains().getActors()));
-            strategies.add(new GenreFilter(actionInput.getContains().getGenre()));
+        if (actionInput.getFilters().getContains() != null) {
+            strategies.add(new ActorsFilter(actionInput.getFilters().getContains().getActors()));
+            strategies.add(new GenreFilter(actionInput.getFilters().getContains().getGenre()));
         }
 
         return strategies;

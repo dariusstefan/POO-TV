@@ -10,5 +10,4 @@ public abstract class Action {
     public abstract void execute(Movies moviesPage);
     public abstract void execute(Upgrades upgradesPage);
     public abstract void execute(SeeDetails seeDetailsPage);
-    public abstract void execute(LogoutPage logoutPage);
 }
