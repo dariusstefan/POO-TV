@@ -4,6 +4,8 @@ import actions.Action;
 import entities.POOTVCore;
 import entities.ILogger;
 
+import java.util.ArrayList;
+
 public final class LogoutPage extends Page {
     private static LogoutPage instance = null;
 
@@ -31,6 +33,7 @@ public final class LogoutPage extends Page {
     public void auto() {
         POOTVCore.getInstance().setCurrentUser(null);
         POOTVCore.getInstance().setCurrentPage(HomepageUnauth.getInstance());
+        POOTVCore.getInstance().resetPagesHistory();
     }
 
     @Override

@@ -31,7 +31,6 @@ public final class HomepageAuth extends Page {
 
     @Override
     public void toLogger(final ILogger logger) {
-        logger.print(this);
     }
 
     @Override

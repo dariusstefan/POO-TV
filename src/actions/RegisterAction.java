@@ -50,7 +50,7 @@ public final class RegisterAction extends Action {
         POOTVCore.getInstance().regUser(newUser);
         POOTVCore.getInstance().setCurrentUser(newUser);
         POOTVCore.getInstance().setCurrentPage(HomepageAuth.getInstance());
-        HomepageAuth.getInstance().toLogger(Logger.getInstance());
+        Logger.getInstance().loginPrint();
     }
 
     @Override

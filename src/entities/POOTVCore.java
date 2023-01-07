@@ -16,9 +16,9 @@ public final class POOTVCore {
     private User currentUser;
     private ArrayList<Movie> movies;
     private Page currentPage;
+    private ArrayList<State> pagesHistory;
     private ArrayList<Action> actions;
     private ArrayList<Movie> currentMovies;
-
     private Movie currentMovie;
 
     private POOTVCore() {
@@ -38,6 +38,7 @@ public final class POOTVCore {
         currentUser = null;
         movies = new ArrayList<>();
         actions = new ArrayList<>();
+        pagesHistory = new ArrayList<>();
 
         for (UserInput userInput : input.getUsers()) {
             regUsers.add(new User(userInput));
@@ -70,6 +71,14 @@ public final class POOTVCore {
 
     public Page getCurrentPage() {
         return currentPage;
+    }
+
+    public ArrayList<State> getPagesHistory() {
+        return pagesHistory;
+    }
+
+    public void resetPagesHistory() {
+        this.pagesHistory = new ArrayList<>();
     }
 
     public void setCurrentUser(final User user) {

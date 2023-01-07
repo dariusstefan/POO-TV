@@ -2,6 +2,7 @@ package actions;
 
 import entities.Logger;
 import entities.POOTVCore;
+import entities.State;
 import pages.HomepageUnauth;
 import pages.HomepageAuth;
 import pages.LoginPage;
@@ -44,6 +45,9 @@ public final class ChangePageAction extends Action {
                 POOTVCore.getInstance().setCurrentMovie(movieTitle);
             }
         }
+
+        if (POOTVCore.getInstance().getCurrentUser() != null)
+            POOTVCore.getInstance().getPagesHistory().add(new State(page, POOTVCore.getInstance().getCurrentMovie()));
 
         POOTVCore.getInstance().setCurrentPage(this.nextPage);
         nextPage.toLogger(Logger.getInstance());

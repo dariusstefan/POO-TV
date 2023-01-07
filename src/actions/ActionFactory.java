@@ -43,20 +43,28 @@ public final class ActionFactory {
                 default -> null;
             };
         } else {
-            return switch (actionInput.getFeature()) {
-                case "login" -> new LoginAction(new Credentials(actionInput.getCredentials()));
-                case "register" -> new RegisterAction(
-                        new Credentials(actionInput.getCredentials()));
-                case "search" -> new SearchAction(actionInput.getStartsWith());
-                case "filter" -> new FilterAction(this.getStrategies(actionInput));
-                case "buy tokens" -> new BuyTokensAction(Integer.parseInt(actionInput.getCount()));
-                case "buy premium account" -> new BuyPremiumAccountAction();
-                case "purchase" -> new PurchaseAction();
-                case "watch" -> new WatchAction();
-                case "like" -> new LikeAction();
-                case "rate" -> new RateAction(actionInput.getRate());
-                default -> null;
-            };
+            if (actionInput.getType().equals("on page")) {
+                return switch (actionInput.getFeature()) {
+                    case "login" -> new LoginAction(new Credentials(actionInput.getCredentials()));
+                    case "register" -> new RegisterAction(
+                            new Credentials(actionInput.getCredentials()));
+                    case "search" -> new SearchAction(actionInput.getStartsWith());
+                    case "filter" -> new FilterAction(this.getStrategies(actionInput));
+                    case "buy tokens" -> new BuyTokensAction(Integer.parseInt(actionInput.getCount()));
+                    case "buy premium account" -> new BuyPremiumAccountAction();
+                    case "purchase" -> new PurchaseAction();
+                    case "watch" -> new WatchAction();
+                    case "like" -> new LikeAction();
+                    case "rate" -> new RateAction(actionInput.getRate());
+                    default -> null;
+                };
+            } else {
+                if (actionInput.getType().equals("back")) {
+                    return new BackAction();
+                } else {
+                    return null;
+                }
+            }
         }
     }
 

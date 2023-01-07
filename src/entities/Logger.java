@@ -51,11 +51,6 @@ public final class Logger implements ILogger {
         outputNode.add(newNode);
     }
 
-    /**This method implements the printing for Homepage Authenticated.**/
-    public void print(final HomepageAuth homepageAuth) {
-        this.print(null, new ArrayList<>(), POOTVCore.getInstance().getCurrentUser().pojoCopy());
-    }
-
     /**This method implements the printing for Movies Page.**/
     public void print(final Movies moviesPage) {
         this.print(null, POOTVCore.getInstance().pojoCopyCurrentMovies(),
@@ -67,5 +62,9 @@ public final class Logger implements ILogger {
         ArrayList<Movie> printable = new ArrayList<>();
         printable.add(POOTVCore.getInstance().getCurrentMovie().pojoCopy());
         this.print(null, printable, POOTVCore.getInstance().getCurrentUser().pojoCopy());
+    }
+
+    public void loginPrint() {
+        this.print(null, new ArrayList<>(), POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }
 }

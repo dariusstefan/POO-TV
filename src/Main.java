@@ -19,6 +19,9 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        if (!args[0].contains("_8.json")) {
+            return;
+        }
         ObjectMapper objectMapper = new ObjectMapper();
         GeneralInput inputData = objectMapper.readValue(new File(args[0]), GeneralInput.class);
         ArrayNode output = objectMapper.createArrayNode();

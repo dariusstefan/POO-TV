@@ -18,6 +18,7 @@ public final class User {
     private ArrayList<Movie> watchedMovies;
     private ArrayList<Movie> likedMovies;
     private ArrayList<Movie> ratedMovies;
+    private ArrayList<Notification> notifications;
 
     public User(final UserInput userInput) {
         this.credentials = new Credentials(userInput.getCredentials());
@@ -27,6 +28,7 @@ public final class User {
         this.watchedMovies = new ArrayList<>();
         this.likedMovies = new ArrayList<>();
         this.ratedMovies = new ArrayList<>();
+        this.notifications = new ArrayList<>();
     }
 
     public User(final User user) {
@@ -37,6 +39,7 @@ public final class User {
         this.purchasedMovies = copyMoviesArray(user.purchasedMovies);
         this.likedMovies = copyMoviesArray(user.likedMovies);
         this.ratedMovies = copyMoviesArray(user.ratedMovies);
+        this.notifications = copyNotificationsArray(user.notifications);
     }
 
     public User(final Credentials credentials) {
@@ -47,6 +50,7 @@ public final class User {
         this.watchedMovies = new ArrayList<>();
         this.likedMovies = new ArrayList<>();
         this.ratedMovies = new ArrayList<>();
+        this.notifications = new ArrayList<>();
     }
 
     /**This method returns a deep-copied object of this class.
@@ -59,6 +63,14 @@ public final class User {
         ArrayList<Movie> copy = new ArrayList<>();
         for (Movie movie : movies) {
             copy.add(movie.pojoCopy());
+        }
+        return copy;
+    }
+
+    private ArrayList<Notification> copyNotificationsArray(final ArrayList<Notification> notifs) {
+        ArrayList<Notification> copy = new ArrayList<>();
+        for (Notification notification : notifs) {
+            copy.add(notification.copyNotification());
         }
         return copy;
     }
@@ -89,6 +101,10 @@ public final class User {
 
     public ArrayList<Movie> getRatedMovies() {
         return ratedMovies;
+    }
+
+    public ArrayList<Notification> getNotifications() {
+        return notifications;
     }
 
     /**This method increases number of tokens for a user.**/
