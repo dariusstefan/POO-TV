@@ -22,6 +22,8 @@ public final class AddMovieAction extends Action {
         POOTVCore.getInstance().getMovies().add(new Movie(addedMovie));
 
         for (User user : POOTVCore.getInstance().getRegUsers()) {
+            if (addedMovie.getCountriesBanned().contains(user.getCredentials().getCountry()))
+                continue;
             for (String genre : addedMovie.getGenres()) {
                 if (user.getSubscriptions().contains(genre)) {
                     user.getNotifications().add(new Notification(addedMovie.getName(), "ADD"));

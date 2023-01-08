@@ -60,7 +60,7 @@ public final class ActionFactory {
             case "back" -> new BackAction();
             case "database" -> switch (actionInput.getFeature()) {
                 case "add" -> new AddMovieAction(actionInput.getAddedMovie());
-                case "delete" -> new DeleteMovieAction();
+                case "delete" -> new DeleteMovieAction(actionInput.getDeletedMovie());
                 default -> null;
             };
             default -> null;

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import input.UserInput;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public final class User {
     private static final int FREE_PREMIUM_MOVIES = 15;
@@ -22,6 +23,9 @@ public final class User {
     private ArrayList<Notification> notifications;
 
     @JsonIgnore
+    private HashMap<String, Integer> genresLiked;
+
+    @JsonIgnore
     private ArrayList<String> subscriptions;
 
     public User(final UserInput userInput) {
@@ -34,6 +38,7 @@ public final class User {
         this.ratedMovies = new ArrayList<>();
         this.notifications = new ArrayList<>();
         this.subscriptions = new ArrayList<>();
+        this.genresLiked = new HashMap<>();
     }
 
     public User(final User user) {
@@ -46,6 +51,7 @@ public final class User {
         this.ratedMovies = copyMoviesArray(user.ratedMovies);
         this.notifications = copyNotificationsArray(user.notifications);
         this.subscriptions = new ArrayList<>(user.subscriptions);
+        this.genresLiked = new HashMap<>(user.genresLiked);
     }
 
     public User(final Credentials credentials) {
@@ -58,6 +64,7 @@ public final class User {
         this.ratedMovies = new ArrayList<>();
         this.notifications = new ArrayList<>();
         this.subscriptions = new ArrayList<>();
+        this.genresLiked = new HashMap<>();
     }
 
     /**This method returns a deep-copied object of this class.
@@ -118,6 +125,10 @@ public final class User {
         return subscriptions;
     }
 
+    public HashMap<String, Integer> getGenresLiked() {
+        return genresLiked;
+    }
+
     /**This method increases number of tokens for a user.**/
     public void incTokens(final int amount) {
         this.tokensCount += amount;
@@ -143,6 +154,11 @@ public final class User {
     /**This method consumes a free movie for a user.**/
     public void decNumFreePremiumMovies() {
         this.numFreePremiumMovies--;
+    }
+
+    /**This method adds a free movie for a premium user.**/
+    public void incNumFreePremiumMovies() {
+        this.numFreePremiumMovies++;
     }
 
     /**This method implements operation of upgrading the account for a user.**/
@@ -181,7 +197,7 @@ public final class User {
     /**This method implements operation of watching a movie for a user.**/
     public int watchMovie(final Movie movie) {
         if (this.watchedMovies.contains(movie)) {
-            return -1;
+            return 0;
         }
         if (!this.purchasedMovies.contains(movie)) {
             return -1;
@@ -200,13 +216,21 @@ public final class User {
         }
         this.likedMovies.add(movie);
         movie.incNumLikes();
+
+        for (String genre : movie.getGenres()) {
+            if (!this.genresLiked.containsKey(genre))
+                this.genresLiked.put(genre, 1);
+            else
+                this.genresLiked.replace(genre, this.genresLiked.get(genre) + 1);
+        }
         return 0;
     }
 
     /**This method implements operation of rating a movie for a user.**/
     public int rateMovie(final Movie movie, final int rating) {
         if (this.ratedMovies.contains(movie)) {
-            return -1;
+            movie.changeRating(this, rating);
+            return 0;
         }
         if (!this.watchedMovies.contains(movie)) {
             return -1;
@@ -215,7 +239,7 @@ public final class User {
             return -1;
         }
         this.ratedMovies.add(movie);
-        movie.addRating(rating);
+        movie.addRating(this, rating);
         return 0;
     }
 }

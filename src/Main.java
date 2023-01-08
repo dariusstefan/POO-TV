@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        if (!args[0].contains("_8.json")) {
+//        if (!args[0].contains("_10.json")) {
 //            return;
 //        }
         ObjectMapper objectMapper = new ObjectMapper();

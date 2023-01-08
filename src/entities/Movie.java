@@ -4,6 +4,7 @@ import input.MovieInput;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public final class Movie {
     private final String name;
@@ -17,7 +18,7 @@ public final class Movie {
     private int numRatings;
 
     @JsonIgnore
-    private ArrayList<Integer> ratings;
+    private HashMap<User, Integer> ratings;
 
     public Movie(final MovieInput movieInput) {
         this.name = movieInput.getName();
@@ -26,7 +27,7 @@ public final class Movie {
         this.genres = movieInput.getGenres();
         this.actors = movieInput.getActors();
         this.countriesBanned = movieInput.getCountriesBanned();
-        this.ratings = new ArrayList<>();
+        this.ratings = new HashMap<>();
         this.avgRating = 0;
         this.numLikes = 0;
         this.numRatings = 0;
@@ -87,14 +88,20 @@ public final class Movie {
         return numRatings;
     }
 
-    public ArrayList<Integer> getRatings() {
+    public HashMap<User, Integer> getRatings() {
         return ratings;
     }
 
     /**This method adds a rating to a movie. It also recalculates the average rating.**/
-    public void addRating(final Integer rating) {
-        this.ratings.add(rating);
+    public void addRating(final User user, final Integer rating) {
+        this.ratings.put(user, rating);
         incNumRatings();
+        recalculateRating();
+    }
+
+    /**This method changes a rating.**/
+    public void changeRating(final User user, final Integer newRating) {
+        this.ratings.replace(user, newRating);
         recalculateRating();
     }
 
@@ -111,7 +118,7 @@ public final class Movie {
     /**This method recalculates average rating for a movie.**/
     public void recalculateRating() {
         double sum = 0;
-        for (Integer i : this.ratings) {
+        for (Integer i : this.ratings.values()) {
             sum += i;
         }
         this.avgRating = sum / numRatings;

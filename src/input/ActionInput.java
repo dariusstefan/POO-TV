@@ -15,10 +15,9 @@ public final class ActionInput {
     private int rate;
     private FiltersInput filters;
     private String count;
-
     private String subscribedGenre;
-
     private MovieInput addedMovie;
+    private String deletedMovie;
 
     public ActionInput() {
     }
@@ -117,5 +116,13 @@ public final class ActionInput {
 
     public void setAddedMovie(MovieInput addedMovie) {
         this.addedMovie = addedMovie;
+    }
+
+    public String getDeletedMovie() {
+        return deletedMovie;
+    }
+
+    public void setDeletedMovie(String deletedMovie) {
+        this.deletedMovie = deletedMovie;
     }
 }
