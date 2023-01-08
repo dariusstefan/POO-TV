@@ -9,6 +9,8 @@ import input.UserInput;
 import pages.Page;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class POOTVCore {
     private static POOTVCore instance;

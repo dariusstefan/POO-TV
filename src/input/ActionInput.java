@@ -16,6 +16,8 @@ public final class ActionInput {
     private FiltersInput filters;
     private String count;
 
+    private String subscribedGenre;
+
     public ActionInput() {
     }
 
@@ -97,5 +99,13 @@ public final class ActionInput {
 
     public void setCount(final String count) {
         this.count = count;
+    }
+
+    public String getSubscribedGenre() {
+        return subscribedGenre;
+    }
+
+    public void setSubscribedGenre(String subscribedGenre) {
+        this.subscribedGenre = subscribedGenre;
     }
 }

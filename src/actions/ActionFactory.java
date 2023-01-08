@@ -31,10 +31,10 @@ public final class ActionFactory {
 
     /**This method creates an action based on an actionInput object.**/
     public Action createAction(final ActionInput actionInput) {
-        if (actionInput.getType().equals("change page")) {
-            return switch (actionInput.getPage()) {
+        return switch (actionInput.getType()) {
+            case "change page" -> switch (actionInput.getPage()) {
                 case "register" -> new ChangePageAction(RegisterPage.getInstance());
-                case "login" ->  new ChangePageAction(LoginPage.getInstance());
+                case "login" -> new ChangePageAction(LoginPage.getInstance());
                 case "logout" -> new ChangePageAction(LogoutPage.getInstance());
                 case "movies" -> new ChangePageAction(Movies.getInstance());
                 case "upgrades" -> new ChangePageAction(Upgrades.getInstance());
@@ -42,30 +42,29 @@ public final class ActionFactory {
                         actionInput.getMovie());
                 default -> null;
             };
-        } else {
-            if (actionInput.getType().equals("on page")) {
-                return switch (actionInput.getFeature()) {
-                    case "login" -> new LoginAction(new Credentials(actionInput.getCredentials()));
-                    case "register" -> new RegisterAction(
-                            new Credentials(actionInput.getCredentials()));
-                    case "search" -> new SearchAction(actionInput.getStartsWith());
-                    case "filter" -> new FilterAction(this.getStrategies(actionInput));
-                    case "buy tokens" -> new BuyTokensAction(Integer.parseInt(actionInput.getCount()));
-                    case "buy premium account" -> new BuyPremiumAccountAction();
-                    case "purchase" -> new PurchaseAction();
-                    case "watch" -> new WatchAction();
-                    case "like" -> new LikeAction();
-                    case "rate" -> new RateAction(actionInput.getRate());
-                    default -> null;
-                };
-            } else {
-                if (actionInput.getType().equals("back")) {
-                    return new BackAction();
-                } else {
-                    return null;
-                }
-            }
-        }
+            case "on page" -> switch (actionInput.getFeature()) {
+                case "login" -> new LoginAction(new Credentials(actionInput.getCredentials()));
+                case "register" -> new RegisterAction(
+                        new Credentials(actionInput.getCredentials()));
+                case "search" -> new SearchAction(actionInput.getStartsWith());
+                case "filter" -> new FilterAction(this.getStrategies(actionInput));
+                case "buy tokens" -> new BuyTokensAction(Integer.parseInt(actionInput.getCount()));
+                case "buy premium account" -> new BuyPremiumAccountAction();
+                case "purchase" -> new PurchaseAction();
+                case "watch" -> new WatchAction();
+                case "like" -> new LikeAction();
+                case "rate" -> new RateAction(actionInput.getRate());
+                case "subscribe" -> new SubscribeAction(actionInput.getSubscribedGenre());
+                default -> null;
+            };
+            case "back" -> new BackAction();
+            case "database" -> switch (actionInput.getFeature()) {
+                case "add" -> new AddMovieAction();
+                case "delete" -> new DeleteMovieAction();
+                default -> null;
+            };
+            default -> null;
+        };
     }
 
     private ArrayList<FilterStrategy> getStrategies(final ActionInput actionInput) {

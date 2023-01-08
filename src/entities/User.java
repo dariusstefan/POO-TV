@@ -1,5 +1,6 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import input.UserInput;
 
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ public final class User {
     private ArrayList<Movie> ratedMovies;
     private ArrayList<Notification> notifications;
 
+    @JsonIgnore
+    private ArrayList<String> subscriptions;
+
     public User(final UserInput userInput) {
         this.credentials = new Credentials(userInput.getCredentials());
         this.tokensCount = 0;
@@ -29,6 +33,7 @@ public final class User {
         this.likedMovies = new ArrayList<>();
         this.ratedMovies = new ArrayList<>();
         this.notifications = new ArrayList<>();
+        this.subscriptions = new ArrayList<>();
     }
 
     public User(final User user) {
@@ -40,6 +45,7 @@ public final class User {
         this.likedMovies = copyMoviesArray(user.likedMovies);
         this.ratedMovies = copyMoviesArray(user.ratedMovies);
         this.notifications = copyNotificationsArray(user.notifications);
+        this.subscriptions = new ArrayList<>(user.subscriptions);
     }
 
     public User(final Credentials credentials) {
@@ -51,6 +57,7 @@ public final class User {
         this.likedMovies = new ArrayList<>();
         this.ratedMovies = new ArrayList<>();
         this.notifications = new ArrayList<>();
+        this.subscriptions = new ArrayList<>();
     }
 
     /**This method returns a deep-copied object of this class.
@@ -105,6 +112,10 @@ public final class User {
 
     public ArrayList<Notification> getNotifications() {
         return notifications;
+    }
+
+    public ArrayList<String> getSubscriptions() {
+        return subscriptions;
     }
 
     /**This method increases number of tokens for a user.**/

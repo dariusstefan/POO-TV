@@ -1,6 +1,5 @@
 package entities;
 
-import pages.HomepageAuth;
 import pages.Movies;
 import pages.SeeDetails;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,7 +63,7 @@ public final class Logger implements ILogger {
         this.print(null, printable, POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }
 
-    public void loginPrint() {
+    public void printLogin() {
         this.print(null, new ArrayList<>(), POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }
 }

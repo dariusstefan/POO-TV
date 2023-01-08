@@ -4,8 +4,6 @@ import actions.Action;
 import entities.POOTVCore;
 import entities.ILogger;
 
-import java.util.ArrayList;
-
 public final class LogoutPage extends Page {
     private static LogoutPage instance = null;
 

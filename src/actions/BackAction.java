@@ -5,7 +5,7 @@ import entities.POOTVCore;
 import entities.State;
 import pages.*;
 
-public class BackAction extends Action {
+public final class BackAction extends Action {
     public BackAction() {
     }
 
@@ -26,37 +26,37 @@ public class BackAction extends Action {
     }
 
     @Override
-    public void execute(HomepageUnauth homepageUnauth) {
+    public void execute(final HomepageUnauth homepageUnauth) {
         Logger.getInstance().printError();
     }
 
     @Override
-    public void execute(HomepageAuth homepageAuth) {
+    public void execute(final HomepageAuth homepageAuth) {
         back();
     }
 
     @Override
-    public void execute(LoginPage loginPage) {
+    public void execute(final LoginPage loginPage) {
         Logger.getInstance().printError();
     }
 
     @Override
-    public void execute(RegisterPage registerPage) {
+    public void execute(final RegisterPage registerPage) {
         Logger.getInstance().printError();
     }
 
     @Override
-    public void execute(Movies moviesPage) {
+    public void execute(final Movies moviesPage) {
         back();
     }
 
     @Override
-    public void execute(Upgrades upgradesPage) {
+    public void execute(final Upgrades upgradesPage) {
         back();
     }
 
     @Override
-    public void execute(SeeDetails seeDetailsPage) {
+    public void execute(final SeeDetails seeDetailsPage) {
         back();
     }
 }
