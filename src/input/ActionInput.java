@@ -18,6 +18,8 @@ public final class ActionInput {
 
     private String subscribedGenre;
 
+    private MovieInput addedMovie;
+
     public ActionInput() {
     }
 
@@ -107,5 +109,13 @@ public final class ActionInput {
 
     public void setSubscribedGenre(String subscribedGenre) {
         this.subscribedGenre = subscribedGenre;
+    }
+
+    public MovieInput getAddedMovie() {
+        return addedMovie;
+    }
+
+    public void setAddedMovie(MovieInput addedMovie) {
+        this.addedMovie = addedMovie;
     }
 }
