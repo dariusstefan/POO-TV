@@ -66,4 +66,8 @@ public final class Logger implements ILogger {
     public void printLogin() {
         this.print(null, new ArrayList<>(), POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }
+
+    public void printRecommendation() {
+        this.print(null, null, POOTVCore.getInstance().getCurrentUser().pojoCopy());
+    }
 }

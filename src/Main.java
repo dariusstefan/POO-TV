@@ -1,6 +1,8 @@
 import actions.Action;
 import entities.Logger;
 import entities.POOTVCore;
+import entities.RecommendationManager;
+import entities.User;
 import input.GeneralInput;
 import pages.HomepageUnauth;
 import pages.HomepageAuth;
@@ -19,9 +21,6 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        if (!args[0].contains("_10.json")) {
-//            return;
-//        }
         ObjectMapper objectMapper = new ObjectMapper();
         GeneralInput inputData = objectMapper.readValue(new File(args[0]), GeneralInput.class);
         ArrayNode output = objectMapper.createArrayNode();
@@ -43,6 +42,11 @@ public class Main {
         for (Action action : POOTVCore.getInstance().getActions()) {
             POOTVCore.getInstance().getCurrentPage().makeAction(action);
         }
+
+        User currentUser = POOTVCore.getInstance().getCurrentUser();
+        if (currentUser != null)
+            if (currentUser.getCredentials().getAccountType().equals("premium"))
+                RecommendationManager.makeRecommendation();
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(args[1]), output);
