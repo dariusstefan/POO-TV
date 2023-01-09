@@ -1,7 +1,16 @@
 package actions;
 
-import entities.*;
-import pages.*;
+import entities.POOTVCore;
+import entities.Logger;
+import entities.User;
+import entities.Notification;
+import pages.HomepageUnauth;
+import pages.HomepageAuth;
+import pages.RegisterPage;
+import pages.LoginPage;
+import pages.Movies;
+import pages.SeeDetails;
+import pages.Upgrades;
 
 public final class DeleteMovieAction extends Action {
     private final String deletedMovie;
@@ -21,15 +30,17 @@ public final class DeleteMovieAction extends Action {
 
         for (User user : POOTVCore.getInstance().getRegUsers()) {
             if (user.getPurchasedMovies().removeIf(movie -> movie.getName().equals(deletedMovie))) {
-                if (user.getWatchedMovies().removeIf(movie -> movie.getName().equals(deletedMovie))) {
+                if (user.getWatchedMovies()
+                        .removeIf(movie -> movie.getName().equals(deletedMovie))) {
                     user.getLikedMovies().removeIf(movie -> movie.getName().equals(deletedMovie));
                     user.getRatedMovies().removeIf(movie -> movie.getName().equals(deletedMovie));
                 }
 
-                if (user.getCredentials().getAccountType().equals("premium"))
+                if (user.getCredentials().getAccountType().equals("premium")) {
                     user.incNumFreePremiumMovies();
-                else
+                } else {
                     user.incTokens(2);
+                }
 
                 user.getNotifications().add(new Notification(deletedMovie, "DELETE"));
             }
@@ -37,37 +48,37 @@ public final class DeleteMovieAction extends Action {
     }
 
     @Override
-    public void execute(HomepageUnauth homepageUnauth) {
+    public void execute(final HomepageUnauth homepageUnauth) {
         deleteMovie();
     }
 
     @Override
-    public void execute(HomepageAuth homepageAuth) {
+    public void execute(final HomepageAuth homepageAuth) {
         deleteMovie();
     }
 
     @Override
-    public void execute(LoginPage loginPage) {
+    public void execute(final LoginPage loginPage) {
         deleteMovie();
     }
 
     @Override
-    public void execute(RegisterPage registerPage) {
+    public void execute(final RegisterPage registerPage) {
         deleteMovie();
     }
 
     @Override
-    public void execute(Movies moviesPage) {
+    public void execute(final Movies moviesPage) {
         deleteMovie();
     }
 
     @Override
-    public void execute(Upgrades upgradesPage) {
+    public void execute(final Upgrades upgradesPage) {
         deleteMovie();
     }
 
     @Override
-    public void execute(SeeDetails seeDetailsPage) {
+    public void execute(final SeeDetails seeDetailsPage) {
         deleteMovie();
     }
 }

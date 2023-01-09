@@ -63,10 +63,12 @@ public final class Logger implements ILogger {
         this.print(null, printable, POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }
 
+    /**This method is used to print the output for a login/register operation.**/
     public void printLogin() {
         this.print(null, new ArrayList<>(), POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }
 
+    /**This method is used to print the output for the final recommendation.**/
     public void printRecommendation() {
         this.print(null, null, POOTVCore.getInstance().getCurrentUser().pojoCopy());
     }

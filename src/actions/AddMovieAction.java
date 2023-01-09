@@ -1,8 +1,18 @@
 package actions;
 
-import entities.*;
+import entities.POOTVCore;
+import entities.Logger;
+import entities.User;
+import entities.Movie;
+import entities.Notification;
 import input.MovieInput;
-import pages.*;
+import pages.HomepageUnauth;
+import pages.HomepageAuth;
+import pages.RegisterPage;
+import pages.LoginPage;
+import pages.Movies;
+import pages.SeeDetails;
+import pages.Upgrades;
 
 public final class AddMovieAction extends Action {
     private final MovieInput addedMovie;
@@ -22,8 +32,10 @@ public final class AddMovieAction extends Action {
         POOTVCore.getInstance().getMovies().add(new Movie(addedMovie));
 
         for (User user : POOTVCore.getInstance().getRegUsers()) {
-            if (addedMovie.getCountriesBanned().contains(user.getCredentials().getCountry()))
+            if (addedMovie.getCountriesBanned().contains(user.getCredentials().getCountry())) {
                 continue;
+            }
+
             for (String genre : addedMovie.getGenres()) {
                 if (user.getSubscriptions().contains(genre)) {
                     user.getNotifications().add(new Notification(addedMovie.getName(), "ADD"));
@@ -34,37 +46,37 @@ public final class AddMovieAction extends Action {
     }
 
     @Override
-    public void execute(HomepageUnauth homepageUnauth) {
+    public void execute(final HomepageUnauth homepageUnauth) {
         addMovie();
     }
 
     @Override
-    public void execute(HomepageAuth homepageAuth) {
+    public void execute(final HomepageAuth homepageAuth) {
         addMovie();
     }
 
     @Override
-    public void execute(LoginPage loginPage) {
+    public void execute(final LoginPage loginPage) {
         addMovie();
     }
 
     @Override
-    public void execute(RegisterPage registerPage) {
+    public void execute(final RegisterPage registerPage) {
         addMovie();
     }
 
     @Override
-    public void execute(Movies moviesPage) {
+    public void execute(final Movies moviesPage) {
         addMovie();
     }
 
     @Override
-    public void execute(Upgrades upgradesPage) {
+    public void execute(final Upgrades upgradesPage) {
         addMovie();
     }
 
     @Override
-    public void execute(SeeDetails seeDetailsPage) {
+    public void execute(final SeeDetails seeDetailsPage) {
         addMovie();
     }
 }

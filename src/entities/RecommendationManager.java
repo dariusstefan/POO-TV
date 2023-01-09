@@ -1,8 +1,15 @@
 package entities;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Comparator;
+import java.util.List;
 
-public class RecommendationManager {
+public final class RecommendationManager {
+    private RecommendationManager() { }
+
+    /**This method is used to search a movie to make a recommendation for a premium user.**/
     public static void makeRecommendation() {
         HashMap<String, Integer> hashMap = POOTVCore.getInstance()
                 .getCurrentUser().getGenresLiked();
@@ -30,13 +37,13 @@ public class RecommendationManager {
             }
         }
 
-        if (!foundFlag)
+        if (!foundFlag) {
             POOTVCore.getInstance().getCurrentUser().getNotifications()
                     .add(new Notification("No recommendation", "Recommendation"));
-        else
+        } else {
             POOTVCore.getInstance().getCurrentUser().getNotifications()
                     .add(new Notification(recommendMovie.getName(), "Recommendation"));
-
+        }
         Logger.getInstance().printRecommendation();
     }
 }

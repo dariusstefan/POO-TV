@@ -3,7 +3,13 @@ package actions;
 import entities.Logger;
 import entities.POOTVCore;
 import entities.State;
-import pages.*;
+import pages.HomepageUnauth;
+import pages.HomepageAuth;
+import pages.RegisterPage;
+import pages.LoginPage;
+import pages.Movies;
+import pages.SeeDetails;
+import pages.Upgrades;
 
 public final class BackAction extends Action {
     public BackAction() {
@@ -18,8 +24,9 @@ public final class BackAction extends Action {
         State lastState = POOTVCore.getInstance().getPagesHistory()
                 .remove(POOTVCore.getInstance().getPagesHistory().size() - 1);
 
-        if (lastState.getCurrentMovie() != null)
+        if (lastState.getCurrentMovie() != null) {
             POOTVCore.getInstance().setCurrentMovie(lastState.getCurrentMovie().getName());
+        }
 
         POOTVCore.getInstance().setCurrentPage(lastState.getCurrentPage());
         lastState.getCurrentPage().toLogger(Logger.getInstance());

@@ -14,6 +14,7 @@ public final class Notification {
         this.message = notification.message;
     }
 
+    /**This method returns a copy of a notification.**/
     public Notification copyNotification() {
         return new Notification(this);
     }

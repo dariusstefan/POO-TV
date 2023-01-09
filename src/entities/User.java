@@ -218,10 +218,11 @@ public final class User {
         movie.incNumLikes();
 
         for (String genre : movie.getGenres()) {
-            if (!this.genresLiked.containsKey(genre))
+            if (!this.genresLiked.containsKey(genre)) {
                 this.genresLiked.put(genre, 1);
-            else
+            } else {
                 this.genresLiked.replace(genre, this.genresLiked.get(genre) + 1);
+            }
         }
         return 0;
     }

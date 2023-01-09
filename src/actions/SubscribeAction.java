@@ -2,47 +2,53 @@ package actions;
 
 import entities.Logger;
 import entities.POOTVCore;
-import pages.*;
+import pages.HomepageUnauth;
+import pages.HomepageAuth;
+import pages.RegisterPage;
+import pages.LoginPage;
+import pages.Movies;
+import pages.SeeDetails;
+import pages.Upgrades;
 
 public final class SubscribeAction extends Action {
-    private String subscribedGenre;
+    private final String subscribedGenre;
 
     public SubscribeAction(final String subscribedGenre) {
         this.subscribedGenre = subscribedGenre;
     }
 
     @Override
-    public void execute(HomepageUnauth homepageUnauth) {
+    public void execute(final HomepageUnauth homepageUnauth) {
         Logger.getInstance().printError();
     }
 
     @Override
-    public void execute(HomepageAuth homepageAuth) {
+    public void execute(final HomepageAuth homepageAuth) {
         Logger.getInstance().printError();
     }
 
     @Override
-    public void execute(LoginPage loginPage) {
+    public void execute(final LoginPage loginPage) {
         Logger.getInstance().printError();
     }
 
     @Override
-    public void execute(RegisterPage registerPage) {
+    public void execute(final RegisterPage registerPage) {
         Logger.getInstance().printError();
     }
 
     @Override
-    public void execute(Movies moviesPage) {
+    public void execute(final Movies moviesPage) {
         Logger.getInstance().printError();
     }
 
     @Override
-    public void execute(Upgrades upgradesPage) {
+    public void execute(final Upgrades upgradesPage) {
         Logger.getInstance().printError();
     }
 
     @Override
-    public void execute(SeeDetails seeDetailsPage) {
+    public void execute(final SeeDetails seeDetailsPage) {
         if (!POOTVCore.getInstance().getCurrentMovie().getGenres().contains(subscribedGenre)) {
             Logger.getInstance().printError();
             return;

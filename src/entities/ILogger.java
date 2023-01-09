@@ -1,6 +1,5 @@
 package entities;
 
-import pages.HomepageAuth;
 import pages.Movies;
 import pages.SeeDetails;
 

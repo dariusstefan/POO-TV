@@ -19,8 +19,11 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import java.io.File;
 import java.io.IOException;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
+public final class Main {
+    private Main() { }
+
+    /**The main method.**/
+    public static void main(final String[] args) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         GeneralInput inputData = objectMapper.readValue(new File(args[0]), GeneralInput.class);
         ArrayNode output = objectMapper.createArrayNode();
@@ -44,9 +47,11 @@ public class Main {
         }
 
         User currentUser = POOTVCore.getInstance().getCurrentUser();
-        if (currentUser != null)
-            if (currentUser.getCredentials().getAccountType().equals("premium"))
+        if (currentUser != null) {
+            if (currentUser.getCredentials().getAccountType().equals("premium")) {
                 RecommendationManager.makeRecommendation();
+            }
+        }
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(args[1]), output);

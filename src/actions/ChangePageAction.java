@@ -46,8 +46,10 @@ public final class ChangePageAction extends Action {
             }
         }
 
-        if (POOTVCore.getInstance().getCurrentUser() != null)
-            POOTVCore.getInstance().getPagesHistory().add(new State(page, POOTVCore.getInstance().getCurrentMovie()));
+        if (POOTVCore.getInstance().getCurrentUser() != null) {
+            POOTVCore.getInstance().getPagesHistory()
+                    .add(new State(page, POOTVCore.getInstance().getCurrentMovie()));
+        }
 
         POOTVCore.getInstance().setCurrentPage(this.nextPage);
         nextPage.toLogger(Logger.getInstance());
