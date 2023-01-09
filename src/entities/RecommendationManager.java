@@ -16,7 +16,15 @@ public final class RecommendationManager {
 
         ArrayList<Movie> unsortedMovies = POOTVCore.getInstance().getMovies();
         ArrayList<Movie> sortedMovies = new ArrayList<>(unsortedMovies);
-        sortedMovies.sort(Comparator.comparingInt(Movie::getNumLikes).reversed());
+        sortedMovies.sort((movie1, movie2) -> {
+            if (movie1.getNumLikes() < movie2.getNumLikes()) {
+                return 1;
+            }
+            if (movie1.getNumLikes() > movie2.getNumLikes()) {
+                return -1;
+            }
+            return movie1.getName().compareTo(movie2.getName());
+        });
 
         boolean foundFlag = false;
         Movie recommendMovie = null;
