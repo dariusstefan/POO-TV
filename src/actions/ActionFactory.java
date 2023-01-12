@@ -47,7 +47,7 @@ public final class ActionFactory {
                 case "register" -> new RegisterAction(
                         new Credentials(actionInput.getCredentials()));
                 case "search" -> new SearchAction(actionInput.getStartsWith());
-                case "filter" -> new FilterAction(this.getStrategies(actionInput));
+                case "filter" -> new FilterAction(getStrategies(actionInput));
                 case "buy tokens" -> new BuyTokensAction(Integer.parseInt(actionInput.getCount()));
                 case "buy premium account" -> new BuyPremiumAccountAction();
                 case "purchase" -> new PurchaseAction();

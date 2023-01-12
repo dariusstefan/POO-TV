@@ -13,7 +13,7 @@ import strategies.FilterStrategy;
 
 import java.util.ArrayList;
 
-public final class FilterAction extends Action {
+public final class FilterAction implements Action {
     private final ArrayList<FilterStrategy> strategies;
 
     public FilterAction(final ArrayList<FilterStrategy> strategies) {

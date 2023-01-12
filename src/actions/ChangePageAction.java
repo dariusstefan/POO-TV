@@ -12,17 +12,17 @@ import pages.Upgrades;
 import pages.SeeDetails;
 import pages.Page;
 
-public final class ChangePageAction extends Action {
+public final class ChangePageAction implements Action {
     private Page nextPage;
     private final String movieTitle;
 
     public ChangePageAction(final Page page) {
-        this.nextPage = page;
-        this.movieTitle = null;
+        nextPage = page;
+        movieTitle = null;
     }
 
     public ChangePageAction(final Page page, final String movieTitle) {
-        this.nextPage = page;
+        nextPage = page;
         this.movieTitle = movieTitle;
     }
 
@@ -31,12 +31,12 @@ public final class ChangePageAction extends Action {
     }
 
     private void changePage(final Page page) {
-        if (!page.checkReachable(this.nextPage)) {
+        if (!page.checkReachable(nextPage)) {
             Logger.getInstance().printError();
             return;
         }
 
-        if (this.movieTitle != null) {
+        if (movieTitle != null) {
             if (POOTVCore.getInstance().getCurrentMovies()
                     .stream().allMatch(movie -> (!movie.getName().equals(movieTitle)))) {
                 Logger.getInstance().printError();
@@ -51,7 +51,7 @@ public final class ChangePageAction extends Action {
                     .add(new State(page, POOTVCore.getInstance().getCurrentMovie()));
         }
 
-        POOTVCore.getInstance().setCurrentPage(this.nextPage);
+        POOTVCore.getInstance().setCurrentPage(nextPage);
         nextPage.toLogger(Logger.getInstance());
     }
 

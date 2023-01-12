@@ -10,7 +10,7 @@ import pages.Movies;
 import pages.Upgrades;
 import pages.SeeDetails;
 
-public final class BuyPremiumAccountAction extends Action {
+public final class BuyPremiumAccountAction implements Action {
     public BuyPremiumAccountAction() {
     }
 

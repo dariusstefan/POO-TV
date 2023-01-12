@@ -14,7 +14,7 @@ import pages.SeeDetails;
 
 import java.util.ArrayList;
 
-public final class RegisterAction extends Action {
+public final class RegisterAction implements Action {
     private final Credentials credentials;
 
     public RegisterAction(final Credentials credentials) {
@@ -40,13 +40,13 @@ public final class RegisterAction extends Action {
     public void execute(final RegisterPage registerPage) {
         ArrayList<User> regUsers = POOTVCore.getInstance().getRegUsers();
         for (User user : regUsers) {
-            if (user.getCredentials().getName().equals(this.credentials.getName())) {
+            if (user.getCredentials().getName().equals(credentials.getName())) {
                 POOTVCore.getInstance().setCurrentPage(HomepageUnauth.getInstance());
                 Logger.getInstance().printError();
                 return;
             }
         }
-        User newUser = new User(this.credentials);
+        User newUser = new User(credentials);
         POOTVCore.getInstance().regUser(newUser);
         POOTVCore.getInstance().setCurrentUser(newUser);
         POOTVCore.getInstance().setCurrentPage(HomepageAuth.getInstance());

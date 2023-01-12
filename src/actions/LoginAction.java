@@ -14,7 +14,7 @@ import pages.SeeDetails;
 
 import java.util.ArrayList;
 
-public final class LoginAction extends Action {
+public final class LoginAction implements Action {
     private final Credentials credentials;
 
     public LoginAction(final Credentials credentials) {
@@ -37,7 +37,7 @@ public final class LoginAction extends Action {
         boolean foundFlag = false;
         User foundUser = null;
         for (User user : regUsers) {
-            if (user.getCredentials().getName().equals(this.credentials.getName())) {
+            if (user.getCredentials().getName().equals(credentials.getName())) {
                 foundFlag = true;
                 foundUser = user;
             }
@@ -47,7 +47,7 @@ public final class LoginAction extends Action {
             Logger.getInstance().printError();
             return;
         }
-        if (!foundUser.getCredentials().getPassword().equals(this.credentials.getPassword())) {
+        if (!foundUser.getCredentials().getPassword().equals(credentials.getPassword())) {
             POOTVCore.getInstance().setCurrentPage(HomepageUnauth.getInstance());
             Logger.getInstance().printError();
             return;

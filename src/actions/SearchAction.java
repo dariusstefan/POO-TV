@@ -10,7 +10,7 @@ import pages.Movies;
 import pages.Upgrades;
 import pages.SeeDetails;
 
-public final class SearchAction extends Action {
+public final class SearchAction implements Action {
     private final String startsWith;
 
     public SearchAction(final String startsWith) {
@@ -41,7 +41,7 @@ public final class SearchAction extends Action {
     public void execute(final Movies moviesPage) {
         POOTVCore.getInstance().resetCurrentMovies();
         POOTVCore.getInstance().getCurrentMovies()
-                .removeIf(movie -> (!movie.getName().startsWith(this.startsWith)));
+                .removeIf(movie -> (!movie.getName().startsWith(startsWith)));
         moviesPage.toLogger(Logger.getInstance());
     }
 

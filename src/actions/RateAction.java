@@ -10,7 +10,7 @@ import pages.Movies;
 import pages.Upgrades;
 import pages.SeeDetails;
 
-public final class RateAction extends Action {
+public final class RateAction implements Action {
     private final int rating;
 
     public RateAction(final int rating) {
@@ -50,7 +50,7 @@ public final class RateAction extends Action {
     @Override
     public void execute(final SeeDetails seeDetailsPage) {
         int result = POOTVCore.getInstance().getCurrentUser()
-                .rateMovie(POOTVCore.getInstance().getCurrentMovie(), this.rating);
+                .rateMovie(POOTVCore.getInstance().getCurrentMovie(), rating);
         if (result != 0) {
             Logger.getInstance().printError();
             return;

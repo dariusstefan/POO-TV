@@ -10,7 +10,7 @@ import pages.Movies;
 import pages.Upgrades;
 import pages.SeeDetails;
 
-public final class BuyTokensAction extends Action {
+public final class BuyTokensAction implements Action {
     private int count;
 
     public BuyTokensAction(final int count) {
@@ -44,7 +44,7 @@ public final class BuyTokensAction extends Action {
 
     @Override
     public void execute(final Upgrades upgradesPage) {
-        int result = POOTVCore.getInstance().getCurrentUser().buyTokens(this.count);
+        int result = POOTVCore.getInstance().getCurrentUser().buyTokens(count);
         if (result != 0) {
             Logger.getInstance().printError();
         }

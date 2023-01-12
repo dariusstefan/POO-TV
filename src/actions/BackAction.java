@@ -11,7 +11,7 @@ import pages.Movies;
 import pages.SeeDetails;
 import pages.Upgrades;
 
-public final class BackAction extends Action {
+public final class BackAction implements Action {
     public BackAction() {
     }
 

@@ -12,7 +12,7 @@ import pages.Movies;
 import pages.SeeDetails;
 import pages.Upgrades;
 
-public final class DeleteMovieAction extends Action {
+public final class DeleteMovieAction implements Action {
     private final String deletedMovie;
 
     public DeleteMovieAction(final String deletedMovie) {

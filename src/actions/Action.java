@@ -8,25 +8,25 @@ import pages.Movies;
 import pages.Upgrades;
 import pages.SeeDetails;
 
-public abstract class Action {
+public interface Action {
     /**This method should implement an action's behaviour for Homepage Unauthenticated.**/
-    public abstract void execute(HomepageUnauth homepageUnauth);
+    void execute(HomepageUnauth homepageUnauth);
 
     /**This method should implement an action's behaviour for Homepage Authenticated.**/
-    public abstract void execute(HomepageAuth homepageAuth);
+    void execute(HomepageAuth homepageAuth);
 
     /**This method should implement an action's behaviour for Login Page.**/
-    public abstract void execute(LoginPage loginPage);
+    void execute(LoginPage loginPage);
 
     /**This method should implement an action's behaviour for Register Page.**/
-    public abstract void execute(RegisterPage registerPage);
+    void execute(RegisterPage registerPage);
 
     /**This method should implement an action's behaviour for Movies Page.**/
-    public abstract void execute(Movies moviesPage);
+    void execute(Movies moviesPage);
 
     /**This method should implement an action's behaviour for Upgrades Page.**/
-    public abstract void execute(Upgrades upgradesPage);
+    void execute(Upgrades upgradesPage);
 
     /**This method should implement an action's behaviour for See Details Page.**/
-    public abstract void execute(SeeDetails seeDetailsPage);
+    void execute(SeeDetails seeDetailsPage);
 }

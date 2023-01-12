@@ -28,3 +28,8 @@ In this README file, I only noted what I added and modified to implement the fun
   * **POOTVCore** - I added an arraylist of *States* to implement a pages history for the *Back* feature;
 
 The general implementation is explained in file *PHASE1_README.md*.
+
+[Actions package diagram](https://imgur.com/lw47V2r)\
+[Pages package diagram](https://imgur.com/N5CKsvM)\
+[Strategies package diagram](https://imgur.com/MQ7isEE)\
+[Logger diagram](https://imgur.com/HEAHENv)

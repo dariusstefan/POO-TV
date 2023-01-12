@@ -10,7 +10,7 @@ import pages.Movies;
 import pages.SeeDetails;
 import pages.Upgrades;
 
-public final class SubscribeAction extends Action {
+public final class SubscribeAction implements Action {
     private final String subscribedGenre;
 
     public SubscribeAction(final String subscribedGenre) {

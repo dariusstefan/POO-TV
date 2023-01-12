@@ -10,7 +10,7 @@ import pages.Movies;
 import pages.Upgrades;
 import pages.SeeDetails;
 
-public final class LikeAction extends Action {
+public final class LikeAction implements Action {
     public LikeAction() {
     }
 

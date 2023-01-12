@@ -14,7 +14,7 @@ import pages.Movies;
 import pages.SeeDetails;
 import pages.Upgrades;
 
-public final class AddMovieAction extends Action {
+public final class AddMovieAction implements Action {
     private final MovieInput addedMovie;
 
     public AddMovieAction(final MovieInput addedMovie) {

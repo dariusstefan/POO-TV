@@ -10,7 +10,7 @@ import pages.Movies;
 import pages.Upgrades;
 import pages.SeeDetails;
 
-public final class PurchaseAction extends Action {
+public final class PurchaseAction implements Action {
     public PurchaseAction() {
     }
 
