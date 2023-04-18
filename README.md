@@ -1,6 +1,6 @@
 # POO-TV
 
-# Version 1
+## Version 1
 ### Packages
 * **pages/**
     * **Page** - an abstract class that shapes a generic page; it is used to implement the Visitor design pattern (for Logger and Action classes), so that pages are the visitable objects;
@@ -30,7 +30,7 @@
 ### General implementation
 In main method, all pages are intitialized, POOTVCore and Logger are initialized. Next HomepageNeauth is set as current page and current user is null. Next, for every action, the current page calls method **makeAction**.
 
-# Version 2
+## Version 2
 
 Below I only noted what I added and modified to implement the functionalities required in the 2nd stage of the project.
 
