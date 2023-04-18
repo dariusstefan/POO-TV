@@ -1,4 +1,5 @@
 # POO-TV
+This is a simplified implementation of a movie streaming platform backend with functionalities such as register, login, logout, watch, buy and appreciate movies, subscribe to notifications about certain genres and access to new movie recommendations.
 
 ## Version 1
 ### Packages
